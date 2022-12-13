@@ -3,16 +3,16 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { authProvider } from "../../Context/FirebaseContext";
 import { InfinitySpin } from "react-loader-spinner";
+import { useState } from "react";
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();
+  const [error,setError] = useState('')
   const {login,gooogleLogin,loader} = useContext(authProvider)
   const navigate = useNavigate()
   const onSubmit = (data) => {
     login(data.email,data.password)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
+    .then(() => {
       if(loader){
         return <InfinitySpin 
         width='200'
@@ -21,16 +21,15 @@ const SignIn = () => {
       }
       navigate('/')
     })
-    .catch(err => console.log(err))
+    .catch(err => setError(err.message))
+    setError('')
   }
   const handleGoogleLoginIn = ()=>{
     gooogleLogin()
-    .then((result)=>{
-      const user = result.user;
-      console.log(user);
+    .then(()=>{
       navigate('/')
     })
-    .catch(err => console.log(err))
+    .catch(err => setError(err.message))
   }
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center">
@@ -58,6 +57,7 @@ const SignIn = () => {
             {...register("password", { required: true})}
           />
         </div>
+        <p className="text-red-600">{error}</p>
         <div className="mt-5">
             <button type="submit" className="btn  bg-[#293462] w-full">Login</button>
         </div>
