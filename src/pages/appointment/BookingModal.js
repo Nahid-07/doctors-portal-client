@@ -1,8 +1,12 @@
 import React from "react";
 import { format } from "date-fns";
+import { useContext } from "react";
+import { authProvider } from "../../Context/FirebaseContext";
 
 const BookingModal = ({treatment, selected, setTreatment}) => {
     const {name,slots} = treatment;
+    const {user,updateProfilerName} = useContext(authProvider)
+    console.log(user);
     const handleSubmit = (e)=>{
         e.preventDefault()
         const form = e.target;
@@ -19,6 +23,8 @@ const BookingModal = ({treatment, selected, setTreatment}) => {
             slot,
             date
         }
+        updateProfilerName(name)
+        .then(()=>{})
         setTreatment('')
         console.log(customerInfo);
     }
@@ -58,6 +64,7 @@ const BookingModal = ({treatment, selected, setTreatment}) => {
               placeholder="Full name"
               className="input input-bordered w-full"
               name="name"
+              defaultValue={user?.displayName}
               required
             />
             <input
@@ -73,6 +80,8 @@ const BookingModal = ({treatment, selected, setTreatment}) => {
               placeholder="Email"
               className="input input-bordered w-full"
               name="email"
+              defaultValue={user?.email}
+              readOnly
               required
             />
           <button type="submit" className="btn bg-[#293462] w-full">BOOK APPOINTMENT</button>

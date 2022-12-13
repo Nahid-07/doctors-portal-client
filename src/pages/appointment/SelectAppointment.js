@@ -25,7 +25,13 @@ const SelectAppointment = ({ selected }) => {
           ></AppointmentCArd>
         ))}
       </div>
-      {treatment && <BookingModal treatment={treatment} setTreatment={setTreatment} selected={selected}></BookingModal>}
+      {treatment && (
+        <BookingModal
+          treatment={treatment}
+          setTreatment={setTreatment}
+          selected={selected}
+        ></BookingModal>
+      )}
     </div>
   );
 };

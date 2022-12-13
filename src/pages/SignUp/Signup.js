@@ -5,14 +5,15 @@ import { authProvider } from '../../Context/FirebaseContext';
 
 const Signup = () => {
     const { register, handleSubmit } = useForm();
-    const {SignUp,gooogleLogin} = useContext(authProvider)
+    const {SignUp,gooogleLogin,updateProfilerName} = useContext(authProvider)
 
     const navigate = useNavigate()
 
     const handleSignUp = data =>{
       SignUp(data.email,data.password)
       .then(result => {
-        const user = result.user
+        const user = result.user;
+        updateProfilerName(data.fullName)
         console.log(user);
         navigate('/')
       }).catch(err => console.log(err.message))

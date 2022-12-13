@@ -2,6 +2,7 @@ import React from "react";
 
 const AppointmentCArd = ({ appointment ,setTreatment}) => {
   const { name, slots } = appointment;
+  // console.log(appointment);
   return (
     <div className="card border-solid border-2 border-[#293462]">
       <div className="card-body items-center text-center">
