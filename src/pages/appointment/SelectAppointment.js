@@ -5,7 +5,6 @@ import BookingModal from "./BookingModal";
 import { useQuery } from "@tanstack/react-query";
 
 const SelectAppointment = ({ selected }) => {
-  // const [appointments, setAppointments] = useState([]);
   const [treatment, setTreatment] = useState(null);
 
   const {data: appointments=[]} = useQuery({
@@ -16,11 +15,6 @@ const SelectAppointment = ({ selected }) => {
       return data;
     }
   })
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/appointment")
-  //     .then((res) => res.json())
-  //     .then((data) => setAppointments(data));
-  // }, []);
   return (
     <div className="my-20">
       <p className="text-lg font-bold mb-8 text-[#293462] text-center">
