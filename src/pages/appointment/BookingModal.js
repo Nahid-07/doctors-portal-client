@@ -5,7 +5,7 @@ import { authProvider } from "../../Context/FirebaseContext";
 
 const BookingModal = ({treatment, selected, setTreatment}) => {
     const {name,slots} = treatment;
-    const {user,updateProfilerName} = useContext(authProvider)
+    const {user,updateProfilerName} = useContext(authProvider);
     console.log(user);
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -72,7 +72,6 @@ const BookingModal = ({treatment, selected, setTreatment}) => {
               placeholder="Phone number"
               className="input input-bordered w-full"
               name="phone"
-
               required
             />
             <input
@@ -84,6 +83,7 @@ const BookingModal = ({treatment, selected, setTreatment}) => {
               readOnly
               required
             />
+            <p></p>
           <button type="submit" className="btn bg-[#293462] w-full">BOOK APPOINTMENT</button>
           </form>
         </div>

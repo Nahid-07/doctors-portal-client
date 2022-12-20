@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { authProvider } from "../../Context/FirebaseContext";
 import { InfinitySpin } from "react-loader-spinner";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();
@@ -20,6 +21,7 @@ const SignIn = () => {
       />
       }
       navigate('/')
+      toast.success('Successfully logged in')
     })
     .catch(err => setError(err.message))
     setError('')
@@ -57,7 +59,7 @@ const SignIn = () => {
             {...register("password", { required: true})}
           />
         </div>
-        <p className="text-red-600">{error}</p>
+        <p className="text-red-600">{error.slice(22,42)}</p>
         <div className="mt-5">
             <button type="submit" className="btn  bg-[#293462] w-full">Login</button>
         </div>
