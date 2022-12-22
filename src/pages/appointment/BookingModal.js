@@ -2,11 +2,10 @@ import React from "react";
 import { format } from "date-fns";
 import { useContext } from "react";
 import { authProvider } from "../../Context/FirebaseContext";
-import { json } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const BookingModal = ({ treatment, selected, setTreatment }) => {
-  const { name, slots } = treatment;
+  const { name : treatmentName , slots } = treatment;
   const { user, updateProfilerName } = useContext(authProvider);
   console.log(user);
   const handleSubmit = (e) => {
@@ -21,11 +20,12 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
       customerName,
       phone,
       email,
-      name,
+      treatmentName,
       slot,
       date,
     };
-    updateProfilerName(name).then(() => {});
+    // console.log(customerName);
+    updateProfilerName(customerName).then(() => {});
 
     fetch("http://localhost:8000/bookings", {
       method: "POST",
@@ -53,7 +53,7 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold mb-[10px]">{name}</h3>
+          <h3 className="text-lg font-bold mb-[10px]">{treatmentName}</h3>
           <form onSubmit={handleSubmit} className="grid gap-5">
             <input
               type="text"
