@@ -24,7 +24,6 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
       slot,
       date,
     };
-    // console.log(customerName);
     updateProfilerName(customerName).then(() => {});
 
     fetch("http://localhost:8000/bookings", {
