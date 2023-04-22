@@ -33,6 +33,7 @@ const Signup = () => {
     }
     return (
         <div className="max-w-7xl mx-auto flex justify-center items-center">
+          {/* Sign up from start from here */}
           <form className="w-96 my-28" onSubmit={handleSubmit(handleSignUp)}>
           <h1 className="text-3xl font-medium text-center">Sign Up</h1>
             <div className="form-control w-full">
