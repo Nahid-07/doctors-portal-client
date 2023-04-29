@@ -11,7 +11,7 @@ const Signup = () => {
     const [error, setError] = useState('')
 
     const navigate = useNavigate()
-
+  //   sign up button function
     const handleSignUp = data =>{
       SignUp(data.email,data.password)
       .then(()=> {
