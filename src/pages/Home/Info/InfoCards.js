@@ -5,6 +5,7 @@ import phone from '../../../assets/icons/phone.svg'
 import Card from './Card';
 
 const InfoCards = () => {
+    // card data for appointment
     const cardData = [
         {
             id: 1,
